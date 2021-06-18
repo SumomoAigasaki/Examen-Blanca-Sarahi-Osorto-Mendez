@@ -14,6 +14,12 @@
                       IsShowingUser="True"
                MoveToLastRegionOnLayoutChange="False"
                 />
+            <StackLayout IsVisible="false">
+                <Label x:Name="txtLongitudMap" Text="{Binding Longitud}"/>
+                <Label x:Name="txtLactitudMap" Text="{Binding Latitud}"/>
+                <Label x:Name="txtShortDesciptionMap" Text="{Binding DescripcionCorta}"/>
+                <Label x:Name="txtLargeDescriptionMap" Text="{Binding DescripcionLarga}"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

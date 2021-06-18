@@ -3,34 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="E1201710110129.MainPage">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+                Priority="0"
+                Order="Primary"
+                x:Name="btnNewUbication"
+                Text="Nueva Ubicacion"
+                Clicked="btnNewUbication_Clicked"
+            />
+        <ToolbarItem
+                Priority="0"
+                Order="Primary"
+                x:Name="btnListUbication"
+                Text="Ubicacion Salvada"
+                Clicked="btnListUbication_Clicked"
+            />
+
+    </ContentPage.ToolbarItems>
+
     <ScrollView>
         <StackLayout>
+            
 
-            <StackLayout 
-                            Orientation="Horizontal">
-            <!--Botones del Inicio-->
-            <Button x:Name="btnNewUbication"
-                    Margin="18,10,20,20"
-                    HeightRequest="50"
-                    CornerRadius="20"
-                    WidthRequest="150"
-                    BackgroundColor="#81F1F7"
-                    Text="Nueva Ubicacion"
-                    Clicked="btnNewUbication_Clicked"/>
-        
-            <Button x:Name="btnListUbication"
-                    Margin="0,10,20,20"
-                    HeightRequest="50"
-                    CornerRadius="20"
-                    WidthRequest="200"
-                    BackgroundColor="#488FF7"
-                    Text="Ubicacion Salvada"
-                    Clicked="btnListUbication_Clicked"/>
-
-            </StackLayout>
-
-            <Image 
-                    Margin="20,0"
+                 <Image 
+                     
+                    Margin="20,5,10,5"
                    Source="logouth.png"/>
             
             <!--Ingresa Latitud-->
@@ -68,6 +65,8 @@
                     Placeholder="Games Plus"/>
 
             <!--Botones del Final-->
+        <StackLayout 
+                            Orientation="Horizontal">
             <Button x:Name="btnSavedUbication"
                     Margin="20,10"
                     HeightRequest="50"
@@ -83,6 +82,7 @@
                     BackgroundColor="#488FF7"
                     Text="Ubicacion Salvada"
                      Clicked="btnListUbication_Clicked"/>
+        </StackLayout>
 
         </StackLayout>
     </ScrollView>

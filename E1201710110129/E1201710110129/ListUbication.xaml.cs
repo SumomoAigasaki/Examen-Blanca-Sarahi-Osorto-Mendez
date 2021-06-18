@@ -36,25 +36,28 @@ namespace E1201710110129
 
         private async void btnViewMap_Clicked(object sender, EventArgs e)
         {
-            if (seleccinarId != null)
+            using (SQLiteConnection conexion = new SQLiteConnection(App.UbicacionDB))
             {
-                var mapa = new
+                if (seleccinarId != null)
                 {
-                    Id = seleccinarId.Id,
-                    Latitud = double.Parse(seleccinarId.Latitud),
-                    Longitud = double.Parse(seleccinarId.Longitud),
-                    DescripcionCorta = seleccinarId.DescripcionCorta,
-                    DescripcionLarga = seleccinarId.DescripcionLarga
-                };
+                    var mapa = new
+                    {
+                        Id = seleccinarId.Id,
+                        Latitud = seleccinarId.Latitud,
+                        Longitud = seleccinarId.Longitud,
+                        DescripcionCorta = seleccinarId.DescripcionCorta,
+                        DescripcionLarga = seleccinarId.DescripcionLarga
+                    };
 
-                //await DisplayAlert("Datos a Enviar> " + seleccinarId.Id + " " + seleccinarId.DescripcionCorta, " Ubicacion Larga> " + seleccinarId.DescripcionLarga + " Coordenadas >> " + seleccinarId.Latitud + " " + seleccinarId.Longitud, "OK");
+                    //await DisplayAlert("Datos a Enviar> " + seleccinarId.Id + " " + seleccinarId.DescripcionCorta, " Ubicacion Larga> " + seleccinarId.DescripcionLarga + " Coordenadas >> " + seleccinarId.Latitud + " " + seleccinarId.Longitud, "OK");
 
-                var Page = new MapPage();
-                Page.BindingContext = mapa;
-                await Navigation.PushAsync(Page);
+                    var Page = new MapPage();
+                    Page.BindingContext = mapa;
+                    await Navigation.PushAsync(Page);
+                }
+                else
+                    messagetSelect();
             }
-            else
-                messagetSelect();
         }
 
         private void btnEliminar_Clicked(object sender, EventArgs e)
