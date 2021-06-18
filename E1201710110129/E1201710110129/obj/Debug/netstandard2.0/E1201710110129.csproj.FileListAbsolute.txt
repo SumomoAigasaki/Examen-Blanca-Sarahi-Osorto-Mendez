@@ -1,0 +1,16 @@
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\bin\Debug\netstandard2.0\E1201710110129.deps.json
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\bin\Debug\netstandard2.0\E1201710110129.dll
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\bin\Debug\netstandard2.0\ref\E1201710110129.dll
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\bin\Debug\netstandard2.0\E1201710110129.pdb
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\obj\Debug\netstandard2.0\E1201710110129.csprojAssemblyReference.cache
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\obj\Debug\netstandard2.0\E1201710110129.AssemblyInfoInputs.cache
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\obj\Debug\netstandard2.0\E1201710110129.AssemblyInfo.cs
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\obj\Debug\netstandard2.0\E1201710110129.csproj.CoreCompileInputs.cache
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\obj\Debug\netstandard2.0\E1201710110129.dll
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\obj\Debug\netstandard2.0\ref\E1201710110129.dll
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\obj\Debug\netstandard2.0\E1201710110129.pdb
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\obj\Debug\netstandard2.0\ListUbication.xaml.g.cs
+C:\Users\Sarah Osorto\source\repos\E1201710110129\E1201710110129\E1201710110129\obj\Debug\netstandard2.0\MapPage.xaml.g.cs

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="E1201710110129.ListUbication">
+    <ContentPage.Content>
+        <StackLayout>
+           
+            <ListView x:Name="ListaUbicacion" ItemSelected="ListaUbicacion_ItemSelected"  RowHeight="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+
+                            <Grid >
+
+                                <Label  Grid.Column="0"
+                                    Grid.Row="0"
+                                    Text="Descripcion: "
+                                    TextColor="Black"
+                                    FontSize="20"/>
+
+                                <Label Grid.Column="1"
+                                   Grid.Row="0"
+                                   Text="{Binding DescripcionCorta}" 
+                                   FontSize="20"/>
+                            </Grid>
+
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout Orientation="Horizontal">
+                <Button  x:Name="btnEliminar" 
+                         Text="Eliminar" 
+                         WidthRequest="150"
+                         Margin="20,10,20,10" 
+                         CornerRadius="30"
+                         BackgroundColor="#E12E29"                                   
+                         Clicked="btnEliminar_Clicked"/>
+
+                <Button x:Name="btnViewMap"
+                        Text="Ver Mapa" 
+                        WidthRequest="150"
+                        Margin="20,10,20,10" 
+                        CornerRadius="30"
+                        BackgroundColor="#55C5DA" 
+                        Clicked="btnViewMap_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
