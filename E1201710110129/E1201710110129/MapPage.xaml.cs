@@ -55,7 +55,7 @@ namespace E1201710110129
 
                         localizacion = await Geolocation.GetLocationAsync();
                     }
-                    mpMapa.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(localizacion.Latitude, localizacion.Longitude), Distance.FromKilometers(1)));
+                    mpMapa.MoveToRegion(MapSpan.FromCenterAndRadius(ubicacion.Position, Distance.FromKilometers(1)));
                 }
 
     }

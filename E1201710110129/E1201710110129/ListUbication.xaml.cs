@@ -40,38 +40,25 @@ namespace E1201710110129
             var Gps = CrossGeolocator.Current;
             if (Gps.IsGeolocationEnabled)//Servicio de Geolocalizacion existente
             {
-               
+
 
                 if (Gps.IsGeolocationEnabled)//VALIDA QUE EL GPS ESTA ENCENDIDO
                 {
+
+                    
+
                     using (SQLiteConnection conexion = new SQLiteConnection(App.UbicacionDB))
                     {
                         if (seleccinarId != null)
                         {
-                            var mapa = new
-                            {
-                                Id = seleccinarId.Id,
-                                Latitud = seleccinarId.Latitud,
-                                Longitud = seleccinarId.Longitud,
-                                DescripcionCorta = seleccinarId.DescripcionCorta,
-                                DescripcionLarga = seleccinarId.DescripcionLarga
-                            };
-
-                            //await DisplayAlert("Datos a Enviar> " + seleccinarId.Id + " " + seleccinarId.DescripcionCorta, " Ubicacion Larga> " + seleccinarId.DescripcionLarga + " Coordenadas >> " + seleccinarId.Latitud + " " + seleccinarId.Longitud, "OK");
-
-                            var Page = new MapPage();
-                            Page.BindingContext = mapa;
-                            await Navigation.PushAsync(Page);
+                            OnBackButtonPressed();
                         }
+
                         else
                             messagetSelect();
                     }
                 }
-                else
-                {
-
-                   
-                }
+               
             }
             else
             {
@@ -80,16 +67,17 @@ namespace E1201710110129
                 
             }
 
-        private void btnEliminar_Clicked(object sender, EventArgs e)
+        private async void btnEliminar_Clicked(object sender, EventArgs e)
         {
 
             using (SQLiteConnection conexion = new SQLiteConnection(App.UbicacionDB))
             {
                 if (seleccinarId != null)
                 {
-                    DisplayAlert("Aviso", "Se Eliminara el Campo Seleccionado(ID): " + seleccinarId.Id + " Nombre: " + seleccinarId.DescripcionCorta + " De la lista de Ubicaciones Guardadas", "Ok");
+                    await DisplayAlert("Aviso", "Se Eliminara el Campo Seleccionado(ID): " + seleccinarId.Id + " Nombre: " + seleccinarId.DescripcionCorta + " De la lista de Ubicaciones guardadas", "Ok");
 
                     var ListaMapas = conexion.Delete<Mapa>(seleccinarId.Id);
+                    OnAppearing();
                 }
                 else
                     messagetSelect();
@@ -112,6 +100,41 @@ namespace E1201710110129
            private async void messagetSelect()
         {
             await DisplayAlert("Sin Seleccion", "Por Favor Seleccione un Dato", "OK");
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            //return base.OnBackButtonPressed();
+
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("Accion", "¿Desea ir a la Ubicacion indicada?", "Yes", "No");
+                if (result) Ver();
+
+            });
+
+
+            return true;
+        }
+
+        private async void Ver()
+        {
+           
+                    var mapa = new
+                    {
+                        Id = seleccinarId.Id,
+                        Latitud = seleccinarId.Latitud,
+                        Longitud = seleccinarId.Longitud,
+                        DescripcionCorta = seleccinarId.DescripcionCorta,
+                        DescripcionLarga = seleccinarId.DescripcionLarga
+                    };
+
+                    //await DisplayAlert("Datos a Enviar> " + seleccinarId.Id + " " + seleccinarId.DescripcionCorta, " Ubicacion Larga> " + seleccinarId.DescripcionLarga + " Coordenadas >> " + seleccinarId.Latitud + " " + seleccinarId.Longitud, "OK");
+
+                    var Page = new MapPage();
+                    Page.BindingContext = mapa;
+                    await Navigation.PushAsync(Page);
+               
         }
     }
 }

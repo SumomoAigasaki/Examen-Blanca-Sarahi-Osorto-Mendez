@@ -104,8 +104,14 @@ namespace E1201710110129
 
                 resultado = conexion.Insert(Location3);
 
-             }
 
+                if (resultado > 0)
+                {
+
+                    DisplayAlert("Aviso", "Datos de prueba ingresados!! ", "Ok");
+
+                }
+            }
         }
 
        
