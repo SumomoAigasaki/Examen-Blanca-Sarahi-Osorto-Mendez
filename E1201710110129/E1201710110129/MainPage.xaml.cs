@@ -23,19 +23,10 @@ namespace E1201710110129
             var localizacion = CrossGeolocator.Current;
             if (localizacion.IsGeolocationEnabled)//Servicio de Geolocalizacion existente
             {
-                
-                if (localizacion.IsGeolocationEnabled)//VALIDA QUE EL GPS ESTE ACTIVO
-                {
-
-                }
-                else
-                {
-                    
-                    
-                }
+               
             }else
             {
-                DisplayAlert("GPS Apagado", "Por favor, Active el GPS/ Ubicacion", "OK");
+                DisplayAlert("Permisos Geolocalizacion", "Por favor, de Acceso a su ubicacion/geolocalizacion de manera manual en dispositivo", "OK");
             }
         }
 
@@ -43,12 +34,20 @@ namespace E1201710110129
         private async void Localizacion()
         {
 
-            var localizacion = CrossGeolocator.Current;
-            var posicion = await localizacion.GetPositionAsync();
+            var Gps = CrossGeolocator.Current;
+          
+            if (Gps.IsGeolocationEnabled)//VALIDA QUE EL GPS ESTA ENCENDIDO
+            {
+                var localizacion = CrossGeolocator.Current;
+                var posicion = await localizacion.GetPositionAsync();
+                txtLongitud.Text = posicion.Longitude.ToString();
+                txtLatitud.Text = posicion.Latitude.ToString();
+            }
 
-            txtLongitud.Text = posicion.Longitude.ToString();
-            txtLatitud.Text = posicion.Latitude.ToString();
-            //lactitud = double.Parse(txtLatitud.Text);
+            else
+            {
+                await DisplayAlert("Gps Desactivado", "Por favor, Active su GPS/Ubicacion", "OK");
+            }
 
         }
 
@@ -123,16 +122,19 @@ namespace E1201710110129
         private async void btnSavedUbication_Clicked(object sender, EventArgs e)
         {
             Int32 resultado = 0;
-            
+
 
             //validamos que los campos no esten vacios
-
-            if (String.IsNullOrEmpty(txtDescripcion.Text))
+            if (String.IsNullOrEmpty(txtLongitud.Text) && String.IsNullOrEmpty(txtLatitud.Text))
             {
-                await DisplayAlert("Campo Vacio", "Ingrese una Descripcion, Por favor ", "Ok");
+                await DisplayAlert("Sin Datos", "Para Obtener la Lactitud y Longitud presionar <<Nueva Ubicacion>> ", "Ok");
+            }
+            else if (String.IsNullOrEmpty(txtDescripcion.Text))
+            {
+                await DisplayAlert("Campo Vacio", "Por favor, Ingrese una Descripcion de la Ubicacion ", "Ok");
             }else if (String.IsNullOrEmpty(txtDescripcionCorta.Text))
             {
-                await  DisplayAlert("Campo Vacio", "Ingrese una Descripcion Corta, Por favor ", "Ok");
+                await  DisplayAlert("Campo Vacio", "Por favor, Ingrese una Descripcion Corta, Por favor ", "Ok");
             }else
             {
                 //NOS PREPARAMOS PARA GUARDAR

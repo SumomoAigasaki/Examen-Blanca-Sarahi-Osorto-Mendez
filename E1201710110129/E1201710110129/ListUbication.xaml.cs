@@ -52,6 +52,7 @@ namespace E1201710110129
                         if (seleccinarId != null)
                         {
                             OnBackButtonPressed();
+                            
                         }
 
                         else
@@ -134,7 +135,8 @@ namespace E1201710110129
                     var Page = new MapPage();
                     Page.BindingContext = mapa;
                     await Navigation.PushAsync(Page);
-               
+                     seleccinarId = null;
+
         }
     }
 }
