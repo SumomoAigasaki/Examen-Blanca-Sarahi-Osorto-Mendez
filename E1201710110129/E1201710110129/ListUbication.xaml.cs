@@ -47,7 +47,7 @@ namespace E1201710110129
                     DescripcionLarga = seleccinarId.DescripcionLarga
                 };
 
-                await DisplayAlert("Datos a Enviar> " + seleccinarId.Id + " " + seleccinarId.DescripcionCorta, " Ubicacion Larga> " + seleccinarId.DescripcionLarga + " Coordenadas >> " + seleccinarId.Latitud + " " + seleccinarId.Longitud, "OK");
+                //await DisplayAlert("Datos a Enviar> " + seleccinarId.Id + " " + seleccinarId.DescripcionCorta, " Ubicacion Larga> " + seleccinarId.DescripcionLarga + " Coordenadas >> " + seleccinarId.Latitud + " " + seleccinarId.Longitud, "OK");
 
                 var Page = new MapPage();
                 Page.BindingContext = mapa;
@@ -60,6 +60,18 @@ namespace E1201710110129
         private void btnEliminar_Clicked(object sender, EventArgs e)
         {
 
+            using (SQLiteConnection conexion = new SQLiteConnection(App.UbicacionDB))
+            {
+                if (seleccinarId != null)
+                {
+                    DisplayAlert("Aviso", "Se Eliminara el Campo Seleccionado(ID): " + seleccinarId.Id + " Nombre: " + seleccinarId.DescripcionCorta + " De la lista de Ubicaciones Guardadas", "Ok");
+
+                    var ListaMapas = conexion.Delete<Mapa>(seleccinarId.Id);
+                }
+                else
+                    messagetSelect();
+            }
+
         }
 
         private void ListaUbicacion_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -68,7 +80,7 @@ namespace E1201710110129
 
 
             //Confirmamos que se seleccione
-            //DisplayAlert("Informacion de Registro> " + seleccinarId.Id + " " + seleccinarId.DescripcionCorta, " Ubicacion Larga> " + seleccinarId.DescripcionLarga + " Coordenadas >> " + seleccinarId.Latitud + " " + seleccinarId.Longitud, "OK");
+            DisplayAlert("Informacion de Registro> " + seleccinarId.Id + " " + seleccinarId.DescripcionCorta, " Ubicacion Larga> " + seleccinarId.DescripcionLarga + " Coordenadas >> " + seleccinarId.Latitud + " " + seleccinarId.Longitud, "OK");
 
             //DisplayAlert("campo seleccionado (id): " + seleccinarId.Id,
             //    "nombre " + seleccinarId.DescripcionLarga + " de la lista", "ok");

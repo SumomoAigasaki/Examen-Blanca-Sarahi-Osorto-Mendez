@@ -28,9 +28,11 @@ namespace E1201710110129
         protected async override void OnAppearing( )
         {
             base.OnAppearing();
+
             Mapa Coordenada = new Mapa();
 
             await DisplayAlert("Informacion de Registro> " + Coordenada.Id+" "+ Coordenada.DescripcionCorta," Ubicacion Larga> "+ Coordenada.DescripcionLarga+ " Coordenadas >> " +Coordenada.Latitud + " "+ Coordenada.Longitud,"OK" );
+
 
             var ubicacion = new Pin
             {

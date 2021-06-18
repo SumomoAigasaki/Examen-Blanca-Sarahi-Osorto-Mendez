@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
            
-            <ListView x:Name="ListaUbicacion" ItemSelected="ListaUbicacion_ItemSelected"  RowHeight="100">
+            <ListView x:Name="ListaUbicacion" ItemSelected="ListaUbicacion_ItemSelected"  RowHeight="125">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
@@ -22,6 +22,27 @@
                                    Grid.Row="0"
                                    Text="{Binding DescripcionCorta}" 
                                    FontSize="20"/>
+
+
+
+                                <Button  Grid.Column="0"
+                                         Grid.Row="1"
+                                         x:Name="btnEliminar" 
+                                         Text="Eliminar"
+                                         Margin="20,10" 
+                                         CornerRadius="30"
+                                         BackgroundColor="#E12E29"                                   
+                                         Clicked="btnEliminar_Clicked"/>
+
+                                <Button Grid.Column="1"
+                                   Grid.Row="1"
+                                        x:Name="btnViewMap"
+                                            Text="Ver Mapa" 
+                                            Margin="20,10" 
+                                            CornerRadius="30"
+                                            BackgroundColor="#55C5DA" 
+                                            Clicked="btnViewMap_Clicked"/>
+                              
                             </Grid>
 
                         </ViewCell>
@@ -30,23 +51,6 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <StackLayout Orientation="Horizontal">
-                <Button  x:Name="btnEliminar" 
-                         Text="Eliminar" 
-                         WidthRequest="150"
-                         Margin="20,10,20,10" 
-                         CornerRadius="30"
-                         BackgroundColor="#E12E29"                                   
-                         Clicked="btnEliminar_Clicked"/>
-
-                <Button x:Name="btnViewMap"
-                        Text="Ver Mapa" 
-                        WidthRequest="150"
-                        Margin="20,10,20,10" 
-                        CornerRadius="30"
-                        BackgroundColor="#55C5DA" 
-                        Clicked="btnViewMap_Clicked"/>
-            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
