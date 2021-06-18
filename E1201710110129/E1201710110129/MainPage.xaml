@@ -65,10 +65,9 @@
                     Placeholder="Games Plus"/>
 
             <!--Botones del Final-->
-        <StackLayout 
+            <StackLayout Margin="20,10,20,10"
                             Orientation="Horizontal">
             <Button x:Name="btnSavedUbication"
-                    Margin="20,10"
                     HeightRequest="50"
                     CornerRadius="20"
                     BackgroundColor="#6EF748"
@@ -76,13 +75,19 @@
                     Clicked="btnSavedUbication_Clicked"/>
 
             <Button  x:Name="btnListUbication1"
-                     Margin="20,10"
                     HeightRequest="50"
                     CornerRadius="20"
                     BackgroundColor="#488FF7"
                     Text="Ubicacion Salvada"
                      Clicked="btnListUbication_Clicked"/>
         </StackLayout>
+            <Button x:Name="btnEnterData"
+                    Margin="20,10"
+                    HeightRequest="50"
+                    CornerRadius="10"
+                    BackgroundColor="#F748EF"
+                    Text="Ingresar Datos de Prueba" 
+                    Clicked="btnEnterData_Clicked"/>
 
         </StackLayout>
     </ScrollView>

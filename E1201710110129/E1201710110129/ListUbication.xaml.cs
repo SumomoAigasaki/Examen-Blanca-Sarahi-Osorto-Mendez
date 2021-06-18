@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.Maps;
+using Plugin.Geolocator;
 
 namespace E1201710110129
 {
@@ -36,29 +37,48 @@ namespace E1201710110129
 
         private async void btnViewMap_Clicked(object sender, EventArgs e)
         {
-            using (SQLiteConnection conexion = new SQLiteConnection(App.UbicacionDB))
+            var Gps = CrossGeolocator.Current;
+            if (Gps.IsGeolocationEnabled)//Servicio de Geolocalizacion existente
             {
-                if (seleccinarId != null)
+               
+
+                if (Gps.IsGeolocationEnabled)//VALIDA QUE EL GPS ESTA ENCENDIDO
                 {
-                    var mapa = new
+                    using (SQLiteConnection conexion = new SQLiteConnection(App.UbicacionDB))
                     {
-                        Id = seleccinarId.Id,
-                        Latitud = seleccinarId.Latitud,
-                        Longitud = seleccinarId.Longitud,
-                        DescripcionCorta = seleccinarId.DescripcionCorta,
-                        DescripcionLarga = seleccinarId.DescripcionLarga
-                    };
+                        if (seleccinarId != null)
+                        {
+                            var mapa = new
+                            {
+                                Id = seleccinarId.Id,
+                                Latitud = seleccinarId.Latitud,
+                                Longitud = seleccinarId.Longitud,
+                                DescripcionCorta = seleccinarId.DescripcionCorta,
+                                DescripcionLarga = seleccinarId.DescripcionLarga
+                            };
 
-                    //await DisplayAlert("Datos a Enviar> " + seleccinarId.Id + " " + seleccinarId.DescripcionCorta, " Ubicacion Larga> " + seleccinarId.DescripcionLarga + " Coordenadas >> " + seleccinarId.Latitud + " " + seleccinarId.Longitud, "OK");
+                            //await DisplayAlert("Datos a Enviar> " + seleccinarId.Id + " " + seleccinarId.DescripcionCorta, " Ubicacion Larga> " + seleccinarId.DescripcionLarga + " Coordenadas >> " + seleccinarId.Latitud + " " + seleccinarId.Longitud, "OK");
 
-                    var Page = new MapPage();
-                    Page.BindingContext = mapa;
-                    await Navigation.PushAsync(Page);
+                            var Page = new MapPage();
+                            Page.BindingContext = mapa;
+                            await Navigation.PushAsync(Page);
+                        }
+                        else
+                            messagetSelect();
+                    }
                 }
                 else
-                    messagetSelect();
+                {
+
+                   
+                }
             }
-        }
+            else
+            {
+                await DisplayAlert("GPS Apagado", "Para ver la Ubicacion de manera Correcta. Por favor, Active el GPS/ Ubicacion", "OK");
+            }
+                
+            }
 
         private void btnEliminar_Clicked(object sender, EventArgs e)
         {
@@ -79,14 +99,13 @@ namespace E1201710110129
 
         private void ListaUbicacion_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+
             seleccinarId=e.SelectedItem as Mapa;
 
 
             //Confirmamos que se seleccione
-            DisplayAlert("Informacion de Registro> " + seleccinarId.Id + " " + seleccinarId.DescripcionCorta, " Ubicacion Larga> " + seleccinarId.DescripcionLarga + " Coordenadas >> " + seleccinarId.Latitud + " " + seleccinarId.Longitud, "OK");
+            //DisplayAlert("Informacion de Registro> " + seleccinarId.Id + " " + seleccinarId.DescripcionCorta, " Ubicacion Larga> " + seleccinarId.DescripcionLarga + " Coordenadas >> " + seleccinarId.Latitud + " " + seleccinarId.Longitud, "OK");
 
-            //DisplayAlert("campo seleccionado (id): " + seleccinarId.Id,
-            //    "nombre " + seleccinarId.DescripcionLarga + " de la lista", "ok");
 
         }
         

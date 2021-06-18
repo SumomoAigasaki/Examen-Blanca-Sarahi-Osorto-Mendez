@@ -32,43 +32,31 @@ namespace E1201710110129
         {
             base.OnAppearing();
 
-            //var Gps = CrossGeolocator.Current;
-            //if (Gps.IsGeolocationAvailable)//Servicio de Geolocalizacion existente
-            //{
-            //    //DisplayAlert("Tiene Permisoso", "Tiene Permiso Ubicacion", "OK");
+          
 
-            //    if (!Gps.IsGeolocationEnabled)//VALIDA QUE EL GPS ESTE APAGADO
-            //    {
-            //        DisplayAlert("GPS Apagado", "Por favor salga y encienda el GPS/ Ubicacion y vuelva a entrar", "OK");
+                    Longitud = Convert.ToDouble(txtLongitudMap.Text);
+                    lactitud = Convert.ToDouble(txtLactitudMap.Text);
 
-            //    }
+                    Pin ubicacion = new Pin();
+                    {
+                        ubicacion.Label = txtShortDesciptionMap.Text;
+                        ubicacion.Address = txtLargeDescriptionMap.Text;
+                        ubicacion.Type = PinType.Place;
+                        ubicacion.Position = new Position(lactitud, Longitud);
 
-               
-            //}
-
-            Longitud = Convert.ToDouble(txtLongitudMap.Text);
-            lactitud = Convert.ToDouble(txtLactitudMap.Text);
-
-            Pin ubicacion = new Pin();
-            {
-                ubicacion.Label = txtShortDesciptionMap.Text;
-                ubicacion.Address = txtLargeDescriptionMap.Text;
-                ubicacion.Type = PinType.Place;
-                ubicacion.Position = new Position(lactitud, Longitud);
-
-            }
-            mpMapa.Pins.Add(ubicacion);
+                    }
+                    mpMapa.Pins.Add(ubicacion);
 
 
+                    var localizacion = await Geolocation.GetLastKnownLocationAsync();
 
-            var localizacion = await Geolocation.GetLastKnownLocationAsync();
                     if (localizacion == null)
                     {
+
                         localizacion = await Geolocation.GetLocationAsync();
                     }
                     mpMapa.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(localizacion.Latitude, localizacion.Longitude), Distance.FromKilometers(1)));
                 }
-
 
     }
 }

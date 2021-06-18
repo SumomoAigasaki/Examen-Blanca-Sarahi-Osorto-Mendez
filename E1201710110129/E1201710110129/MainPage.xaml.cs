@@ -20,26 +20,22 @@ namespace E1201710110129
         {
             InitializeComponent();
 
-            
-
             var localizacion = CrossGeolocator.Current;
-            if (localizacion.IsGeolocationAvailable)//Servicio de Geolocalizacion existente
+            if (localizacion.IsGeolocationEnabled)//Servicio de Geolocalizacion existente
             {
-                //DisplayAlert("Tiene Permisoso", "Tiene Permiso Ubicacion", "OK");
-
-                if (!localizacion.IsGeolocationEnabled)//VALIDA QUE EL GPS ESTE APAGADO
+                
+                if (localizacion.IsGeolocationEnabled)//VALIDA QUE EL GPS ESTE ACTIVO
                 {
-                    DisplayAlert("GPS Apagado", "Por favor salga y encienda el GPS/ Ubicacion y vuelva a entrar", "OK");
 
                 }
                 else
                 {
                     
+                    
                 }
             }else
             {
-
-                DisplayAlert("Sin Permisos", "Active el permiso de Ubicacion", "OK");
+                DisplayAlert("GPS Apagado", "Por favor, Active el GPS/ Ubicacion", "OK");
             }
         }
 
@@ -115,7 +111,6 @@ namespace E1201710110129
        
         private async void btnListUbication_Clicked(object sender, EventArgs e)
         {
-            Cargar();
             await Navigation.PushAsync(new ListUbication());           
         }
 
@@ -155,7 +150,10 @@ namespace E1201710110129
                     {
 
                         await DisplayAlert("Aviso", "Se Guardo Exitosamente ", "Ok");
-                     
+
+                        txtDescripcion.Text = "";
+                        txtDescripcionCorta.Text = "";
+
                     }
                     else
                     {
@@ -164,6 +162,11 @@ namespace E1201710110129
                 }
             }
             
+        }
+
+        private void btnEnterData_Clicked(object sender, EventArgs e)
+        {
+            Cargar();
         }
     }
 }
